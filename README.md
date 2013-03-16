@@ -1,6 +1,6 @@
 # CollabCube 3D
 
-![CollabCube 3D Screenshot](https://github.com/googledrive/realtime-cube/raw/master/screenshot.png)
+[![CollabCube 3D Screenshot](https://github.com/googledrive/realtime-cube/raw/master/screenshot.png)](https://realtime-cube.appspot.com/)
 
 ## Overview
 
