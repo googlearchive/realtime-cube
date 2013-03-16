@@ -1,0 +1,61 @@
+application: your-app-engine-app-name
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+  
+- url: /cube3d
+  static_dir: cube3d
+  secure: always
+
+- url: /collabcube.js
+  static_files: collabcube.js
+  upload: collabcube.js
+  secure: always
+
+- url: /loading_spinner_16.gif
+  static_files: loading_spinner_16.gif
+  upload: loading_spinner_16.gif
+  secure: always
+
+- url: /realtime-client-utils.js
+  static_files: realtime-client-utils.js
+  upload: realtime-client-utils.js
+  secure: always
+
+- url: /
+  static_files: index.html
+  upload: index.html
+  secure: always
+
+- url: /favicon.ico
+  static_files: favicon.ico
+  upload: favicon.ico
+  secure: always
+
+- url: /icon.png
+  static_files: icon.png
+  upload: icon.png
+  secure: always
+
+skip_files:
+# Default patterns skipped by App Engine, which must be repeated since
+# specifying skip_files overrides them otherwise.  See
+# https://developers.google.com/appengine/docs/python/config/appconfig#Skipping_Files.
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+# Build files that have no effect in App Engine's runtime.
+- ^.*\.MF$
+- ^.*\.CMF$
+- ^.*\.so$
+- ^.*pywrap.+\.py$
+- ^.*\.jslib$
