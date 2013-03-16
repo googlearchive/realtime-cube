@@ -1,8 +1,14 @@
 body, html {
-  font-family: Tahoma, Geneva, sans-serif;
+  font-family: Arial, Geneva, sans-serif;
+  font-size: 14px;
+  line-height: 150%;
   padding: 15px 10px;
   height: 100%;
   overflow: hidden;
+}
+
+hr {
+  border: solid 1px #ccc;
 }
 
 .face {
@@ -30,13 +36,12 @@ body, html {
 }
 
 #instructions {
-  font-style: italic;
   color: #555;
 }
 
 #loading {
-  margin-top: 50px;
-  margin-left: 200px;
+  margin-top: 40px;
+  margin-left: 160px;
 }
 
 #collaborators {
@@ -66,22 +71,21 @@ body, html {
   display:inline-block;
   padding-right: 12px;
   opacity: 0;
-  
   -webkit-transition: opacity 1s linear;
   -moz-transition: opacity 1s linear;
   -ms-transition: opacity 1s linear;
   -o-transition: opacity 1s linear;
-  transition: opacity 1s linear;  
+  transition: opacity 1s linear;
 }
 
 .collaborator-shown {
   opacity: 1.0;
-  
+
   -webkit-transition: opacity 1s linear;
   -moz-transition: opacity 1s linear;
   -ms-transition: opacity 1s linear;
   -o-transition: opacity 1s linear;
-  transition: opacity 1s linear;  
+  transition: opacity 1s linear;
 }
 
 .collaborator-image {
@@ -126,7 +130,7 @@ body, html {
 }
 
 /*===== Buttons =====*/
-     
+
 .button {
     cursor:pointer;
     margin-left: 0;
