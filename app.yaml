@@ -5,7 +5,7 @@ api_version: 1
 threadsafe: true
 
 handlers:
-  
+
 - url: /cube3d
   static_dir: cube3d
   secure: always
@@ -38,6 +38,11 @@ handlers:
 - url: /icon.png
   static_files: icon.png
   upload: icon.png
+  secure: always
+
+- url: /screenshot.png
+  static_files: screenshot.png
+  upload: screenshot.png
   secure: always
 
 skip_files:

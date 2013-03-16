@@ -30,11 +30,11 @@ var realTimeOptions = {
    * Client ID from the API console.
    */
    clientId: YOUR_CLIENT_ID,
-   
+
   /**
-   * Application ID from the API console.
+   * Application Key from the API console.
    */
-   appId: YOUR_APP_ID,
+   appKey: YOUR_APP_KEY,
 
   /**
    * Function to be called when a RealTime model is first created.
@@ -50,12 +50,12 @@ var realTimeOptions = {
    * ID of the auth button.
    */
   authButtonElementId: 'authorizeButton',
-  
+
   /**
    * Automatically create file after auth.
    */
   autoCreate: true,
-  
+
   /**
    * Name of new files that gets created.
    */
@@ -63,7 +63,7 @@ var realTimeOptions = {
 };
 
 function showShareDialog() {
-  var shareClient = new gapi.drive.share.ShareClient(realTimeOptions.appId);
+  var shareClient = new gapi.drive.share.ShareClient(realTimeOptions.appKey);
   shareClient.setItemIds(rtclient.params['fileId']);
   shareClient.showSettingsDialog();
 }
@@ -129,21 +129,21 @@ function updateForRealTimeDoneInitializing() {
 function onFileLoaded(doc) {
   logDebug('onFileLoaded');
   collabDoc = doc;
-  
+
   document.getElementById("loading").style.display = 'none';
-  
+
   var model = doc.getModel();
   movesList = model.getRoot().get(MOVES_KEY);
   rotationList = model.getRoot().get(ROTATION_KEY);
-  
+
   doc.addEventListener(gapi.drive.realtime.EventType.COLLABORATOR_JOINED, onCollaboratorsChanged);
   doc.addEventListener(gapi.drive.realtime.EventType.COLLABORATOR_LEFT, onCollaboratorsChanged);
-  
+
   movesList.addEventListener(gapi.drive.realtime.EventType.VALUES_ADDED, onMovesListValuesAdded);
   movesList.addEventListener(gapi.drive.realtime.EventType.VALUES_REMOVED, onMovesListValuesRemoved);
 
   rotationList.addEventListener(gapi.drive.realtime.EventType.VALUES_SET, onRotationListValuesSet);
-  
+
   setTimeout(function() {
     updateForRealTimeDoneInitializing();
     setTimeout(function() {
@@ -163,7 +163,7 @@ function updateCollaborators() {
   logDebug('****updateCollaborators***');
   removeAbsentCollaborators();
   addPresentCollaborators();
-    
+
   // TODO: Highlight the collaborator that made the move.
 }
 
@@ -195,7 +195,7 @@ function addPresentCollaborators() {
   var newCollaborators = collabDoc.getCollaborators();
   for (var i = 0; i < newCollaborators.length; i++) {
     maybeAddCollaborator(newCollaborators[i]);
-  }  
+  }
   setTimeout(fadeInAllCollaborators, 0);
 }
 
@@ -204,7 +204,7 @@ function fadeInAllCollaborators() {
   for (var i = 0; i < collaborators.length; i++) {
     var collaboratorDiv = getCollaboratorDiv(collaborators[i]);
     collaboratorDiv.className += ' collaborator-shown';
-  }    
+  }
 }
 
 function maybeAddCollaborator(collaborator) {
@@ -230,7 +230,7 @@ function getCurrentCollaboratorSessionIdsByDom() {
   for (var i = 0; i < collaboratorChildren.length; i++) {
     sessionIds.push(getSessionIdFromCollaboratorDiv(collaboratorChildren[i]));
   }
-  return sessionIds;  
+  return sessionIds;
 }
 
 function getSessionIdFromCollaboratorDiv(collaboratorDiv) {
@@ -241,13 +241,13 @@ function genCollaboratorDiv(collaborator) {
   var collaboratorDiv = document.createElement('div');
   collaboratorDiv.id = getIdForCollaboratorDiv(collaborator);
   collaboratorDiv.setAttribute('class', 'collaborator');
-  
+
   var imgDiv = document.createElement('img');
   imgDiv.setAttribute('class', 'collaborator-image shadow');
   imgDiv.setAttribute('title', collaborator.displayName);
   imgDiv.setAttribute('alt', collaborator.displayName);
   imgDiv.setAttribute('src', collaborator.photoUrl);
-  
+
   collaboratorDiv.appendChild(imgDiv);
   return collaboratorDiv;
 }
@@ -291,7 +291,7 @@ function initDefaultCubeView() {
       // TODO - add in "reset view' hook into UI. Factor out reset view location.
       // TODO - remove all the OZ-specific things to simplify and clean up.
       rubik.setRotationFromObject(defaultCubeView);
-    }    
+    }
   }
 }
 
@@ -302,12 +302,12 @@ function initPreviousCubeMoves() {
 function onMovesListValuesAdded(e) {
   logDebug('Moves List Values Added:');
   logDebug(e);
-  processIncomingMovesAdded(e.values, false /* opt_skipAnimation */);    
+  processIncomingMovesAdded(e.values, false /* opt_skipAnimation */);
   /*
   setTimeout(function() {
     logDebug('Moves List Values Added:');
     logDebug(e);
-    processIncomingMovesAdded(e.values, false);    
+    processIncomingMovesAdded(e.values, false);
   }.bind(this), 0);
   */
 }
@@ -325,7 +325,7 @@ function onRotationListValuesSet(e) {
 }
 
 function processRotationUpdated(newRotationValue) {
-  rotationTasks.push(newRotationValue);  
+  rotationTasks.push(newRotationValue);
   if (!processingRotationTasks) {
     processRotationTasks();
   }
@@ -335,9 +335,9 @@ function processRotationTasks() {
   processingRotationTasks = true;
   // This method should act like a critical section, due to single-threaded
   // nature of JS.
-  // While rotation tasks are present process them, in a chained manner, such 
+  // While rotation tasks are present process them, in a chained manner, such
   // that each event gets processed and rendered individually.
-  setTimeout(function() {    
+  setTimeout(function() {
     if (rotationTasks.length > 0) {
       executeOneRotationTask();
       processRotationTasks();
@@ -404,7 +404,6 @@ function processIncomingMovesAdded(moves, opt_skipAnimation) {
 
 function resetCube() {
   movesList.clear();
-  
   // How does this translate to add/remove? A bunch of removes that we don't track currently...
 }
 
