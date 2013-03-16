@@ -1,5 +1,7 @@
 # CollabCube 3D
 
+![CollabCube 3D Screenshot](https://github.com/googledrive/realtime-cube/raw/master/screenshot.png)
+
 ## Overview
 
 **CollabCube 3D**, is an online game demonstrating usage of the [Google Drive Realtime API](https://developers.google.com/drive/realtime).
@@ -10,13 +12,13 @@ You can try out CollabCube 3D on its [live instance](https://realtime-cube.appsp
 
 ## Installation and Configuration
 
-The project can be run out of any static web server though we provide a configuration file to host it on App Engine.
+The project can run on any static web server, but we also provide required configuration and boilerplate files to host it on App Engine.
 
 If you wish to host it in your own App Engine instance make sure you set the name of your App Engine application in `/app.yaml`. To create an App Engine instance follow the instructions on [appengine.google.com](https://appengine.google.com).
 
 ### Create a Google APIs project and Activate the Drive API
 
-First, you need to activate the Drive API for your app. You can do this in your app's API project in the Google APIs Console.
+First, you need to activate the Drive API for your app. You can do it by configuring your API project in the Google APIs Console.
 
 - Create an API project in the [Google APIs Console](https://developers.google.com/console).
 - Select the Services tab in your API project, and enable the Drive API.
@@ -32,7 +34,7 @@ First, you need to activate the Drive API for your app. You can do this in your 
 - Go to the **Drive SDK** page and copy the **App ID**
 
 
-### Setup your App inforamtion in the code
+### Setup your App information in the code
 
 You should now have your **Client ID** and your **App ID**. In `/collabcube.js` change the `appId` and the `clientId` in the `realTimeOptions` object.
 
