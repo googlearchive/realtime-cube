@@ -59,7 +59,7 @@ var realTimeOptions = {
   /**
    * Name of new files that gets created.
    */
-  defaultTitle: 'CollabCube 3D Game'
+  defaultTitle: 'Realtime Cube'
 };
 
 function showShareDialog() {
@@ -69,8 +69,8 @@ function showShareDialog() {
 }
 
 
-function startCollabCube() {
-  logDebug('Starting Collab Cube');
+function startRealtimeCube() {
+  logDebug('Starting Realtime Cube');
   var realTimeLoader = new rtclient.RealtimeLoader(realTimeOptions);
   realTimeLoader.start(function(){document.getElementById("loading").style.display = ''});
 }
