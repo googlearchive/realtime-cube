@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-var VERSION = 'v2.0.1';
+var VERSION = 'v1.0';
 var IS_DEBUG = false;
 var ENABLE_ROTATION_SYNC = false;
 
