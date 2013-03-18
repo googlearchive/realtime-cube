@@ -10,9 +10,9 @@ handlers:
   static_dir: cube3d
   secure: always
 
-- url: /collabcube.js
-  static_files: collabcube.js
-  upload: collabcube.js
+- url: /realtimecube.js
+  static_files: realtimecube.js
+  upload: realtimecube.js
   secure: always
 
 - url: /loading_spinner_16.gif
