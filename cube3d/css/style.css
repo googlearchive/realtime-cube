@@ -7,6 +7,10 @@ body, html {
   overflow: hidden;
 }
 
+a {
+  color: #666;
+}
+
 hr {
   border: solid 1px #ccc;
 }

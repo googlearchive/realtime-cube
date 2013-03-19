@@ -1,14 +1,14 @@
-# CollabCube 3D
+# Realtime Cube
 
-[![CollabCube 3D Screenshot](https://github.com/googledrive/realtime-cube/raw/master/screenshot.png)](https://realtime-cube.appspot.com/)
+[![Realtime Cube Screenshot](https://github.com/googledrive/realtime-cube/raw/master/screenshot.png)](https://realtime-cube.appspot.com/)
 
 ## Overview
 
-**CollabCube 3D**, is an online game demonstrating usage of the [Google Drive Realtime API](https://developers.google.com/drive/realtime).
+**Realtime Cube**, is an online game demonstrating usage of the [Google Drive Realtime API](https://developers.google.com/drive/realtime).
 
-CollabCube 3D allows you to play to a well known colored cube puzzle collaboratively.
+Realtime Cube allows you to play to a well known colored cube puzzle collaboratively.
 
-You can try out CollabCube 3D on its [live instance](https://realtime-cube.appspot.com).
+You can try out Realtime Cube on its [live instance](https://realtime-cube.appspot.com).
 
 ## Installation and Configuration
 
@@ -23,7 +23,7 @@ First, you need to activate the Drive API for your app. You can do it by configu
 - Create an API project in the [Google APIs Console](https://developers.google.com/console).
 - Select the "Services" tab and enable the Drive API.
 - Select the "API Access" tab in your API project, and click "Create an OAuth 2.0 client ID".
-- In the Branding Information section, provide a name for your application (e.g. "CollabCube 3D"), and click Next. Providing a product logo is optional.
+- In the Branding Information section, provide a name for your application (e.g. "Realtime Cube"), and click Next. Providing a product logo is optional.
 - In the Client ID Settings section, do the following:
   - Select Web application for the Application type
   - Click the more options link next to the heading, Your site or hostname.
@@ -36,7 +36,7 @@ First, you need to activate the Drive API for your app. You can do it by configu
 
 ### Setup your App information
 
-You should now have your **Client ID** and your **App ID**. In `/collabcube.js` change the `appId` and the `clientId` in the `realTimeOptions` object.
+You should now have your **Client ID** and your **App ID**. In `/realtimecube.js` change the `appId` and the `clientId` in the `realTimeOptions` object.
 
 ### Deploy, run that's it!
 
