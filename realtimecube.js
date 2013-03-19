@@ -24,12 +24,12 @@ var realTimeOptions = {
   /**
    * Client ID from the API console.
    */
-   clientId: 'YOUR_CLIENTID_HERE',
+   clientId: YOUR_CLIENTID_HERE,
 
   /**
    * Application Key from the API console.
    */
-   appKey: 'YOUR_APP_KEY_HERE',
+   appKey: YOUR_APP_KEY_HERE,
 
   /**
    * Function to be called when a RealTime model is first created.
