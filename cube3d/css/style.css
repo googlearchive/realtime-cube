@@ -167,6 +167,7 @@ hr {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f5f5f5',EndColorStr='#f1f1f1');
     -webkit-user-select:none;
     -moz-user-select:none;
+    visibility: visible;
 }
 
 .button:hover, .button.hover {
@@ -186,6 +187,7 @@ hr {
     -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
     -moz-box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
     box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
+    visibility: visible;
 }
 
 .button:disabled, .button[disabled=disabled], .disabled  .button, .button.disabled, .button.disabled:hover, .button.disabled:active {
@@ -195,6 +197,7 @@ hr {
     border: 1px solid rgba(0,0,0,0.05);
     cursor: default;
     pointer-events: none;
+    visibility: hidden;
 }
 
 .button-submit:disabled, .button-submit[disabled=disabled], .button-submit.disabled, .button-submit.disabled:hover, .button-submit.disabled:active {
@@ -204,6 +207,7 @@ hr {
     opacity: 0.5;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
     filter: alpha(opacity=50);
+    visibility: hidden;
 }
 
 .button-submit {
@@ -217,6 +221,7 @@ hr {
     background-image: -o-linear-gradient(top,#4d90fe,#4787ed);
     background-image: linear-gradient(top,#4d90fe,#4787ed);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe',EndColorStr='#4787ed');
+    visibility: visible;
 }
 .button-submit:hover {
     border: 1px solid #2f5bb7;
