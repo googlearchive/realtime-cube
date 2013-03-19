@@ -27,9 +27,9 @@ var realTimeOptions = {
    clientId: YOUR_CLIENTID_HERE,
 
   /**
-   * Application Key from the API console.
+   * API Key from the API console.
    */
-   appKey: YOUR_APP_KEY_HERE,
+   apiKey: YOUR_API_KEY_HERE,
 
   /**
    * Function to be called when a RealTime model is first created.
@@ -58,7 +58,7 @@ var realTimeOptions = {
 };
 
 function showShareDialog() {
-  var shareClient = new gapi.drive.share.ShareClient(realTimeOptions.appKey);
+  var shareClient = new gapi.drive.share.ShareClient(realTimeOptions.apiKey);
   shareClient.setItemIds(rtclient.params['fileId']);
   shareClient.showSettingsDialog();
 }
