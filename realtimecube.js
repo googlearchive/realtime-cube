@@ -279,13 +279,6 @@ function onMovesListValuesAdded(e) {
   logDebug('Moves List Values Added:');
   logDebug(e);
   processIncomingMovesAdded(e.values, false /* opt_skipAnimation */);
-  /*
-  setTimeout(function() {
-    logDebug('Moves List Values Added:');
-    logDebug(e);
-    processIncomingMovesAdded(e.values, false);
-  }.bind(this), 0);
-  */
 }
 
 function onMovesListValuesRemoved(e) {
@@ -296,6 +289,9 @@ function onMovesListValuesRemoved(e) {
   }.bind(this), 0);
 }
 
+function scrambleCube() {
+  rubik.randomize();
+}
 
 function addMove(axis, dir, layer) {
   movesList.push(serializeMove(axis, dir, layer));
