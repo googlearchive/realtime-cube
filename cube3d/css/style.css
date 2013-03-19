@@ -107,7 +107,12 @@ hr {
 
 .main-heading-2 {
   font-size: 18px;
-  margin: 20px 0;
+  margin: 16px 0;
+}
+
+.main-heading-3 {
+  font-size: 14px;
+  margin: 12px 0;
 }
 
 #logo {

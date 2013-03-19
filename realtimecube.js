@@ -16,11 +16,6 @@
 
 var VERSION = 'v1.0';
 var IS_DEBUG = false;
-var ENABLE_ROTATION_SYNC = false;
-
-var rotationTasks = [];
-var processingRotationTasks = false;
-var rotationTasksTimer = null;
 
 /**
  * Options for the RealTime loader.
@@ -29,12 +24,12 @@ var realTimeOptions = {
   /**
    * Client ID from the API console.
    */
-   clientId: YOUR_CLIENT_ID,
+   clientId: 'YOUR_CLIENTID_HERE',
 
   /**
    * Application Key from the API console.
    */
-   appKey: YOUR_APP_KEY,
+   appKey: 'YOUR_APP_KEY_HERE',
 
   /**
    * Function to be called when a RealTime model is first created.
@@ -84,11 +79,9 @@ var MOVE_LAYER_KEY = 'layer';
 var MOVE_DIRECTION_KEY = 'dir'
 
 var MOVES_KEY = 'moves';
-var ROTATION_KEY = 'rotation';
 
 var rubik;
 var movesList;
-var rotationString;
 
 var collabDoc;
 
@@ -104,9 +97,6 @@ var collabDoc;
 function initializeModel(model) {
   logDebug('initializeModel');
   model.getRoot().set(MOVES_KEY, model.createList());
-  var rotList = model.createList();
-  rotList.push('');
-  model.getRoot().set(ROTATION_KEY, rotList);
 }
 
 function updateForCubeDoneInitializing() {
@@ -134,15 +124,12 @@ function onFileLoaded(doc) {
 
   var model = doc.getModel();
   movesList = model.getRoot().get(MOVES_KEY);
-  rotationList = model.getRoot().get(ROTATION_KEY);
 
   doc.addEventListener(gapi.drive.realtime.EventType.COLLABORATOR_JOINED, onCollaboratorsChanged);
   doc.addEventListener(gapi.drive.realtime.EventType.COLLABORATOR_LEFT, onCollaboratorsChanged);
 
   movesList.addEventListener(gapi.drive.realtime.EventType.VALUES_ADDED, onMovesListValuesAdded);
   movesList.addEventListener(gapi.drive.realtime.EventType.VALUES_REMOVED, onMovesListValuesRemoved);
-
-  rotationList.addEventListener(gapi.drive.realtime.EventType.VALUES_SET, onRotationListValuesSet);
 
   setTimeout(function() {
     updateForRealTimeDoneInitializing();
@@ -278,22 +265,11 @@ function getIdForCollaboratorDivBySessionId(sessionId) {
 
 function initCube() {
   rubik = new Rubik();
-  initDefaultCubeView();
   initPreviousCubeMoves();
 
   setTimeout(updateForCubeDoneInitializing, 0);
 }
 
-function initDefaultCubeView() {
-  if (ENABLE_ROTATION_SYNC) {
-    var defaultCubeView = rotationList.get(0);
-    if (defaultCubeView && defaultCubeView != '') {
-      // TODO - add in "reset view' hook into UI. Factor out reset view location.
-      // TODO - remove all the OZ-specific things to simplify and clean up.
-      rubik.setRotationFromObject(defaultCubeView);
-    }
-  }
-}
 
 function initPreviousCubeMoves() {
   processIncomingMovesAdded(movesList.asArray(), true /* opt_skipAnimation */);
@@ -320,53 +296,11 @@ function onMovesListValuesRemoved(e) {
   }.bind(this), 0);
 }
 
-function onRotationListValuesSet(e) {
-  processRotationUpdated(e.newValues[0]);
-}
 
-function processRotationUpdated(newRotationValue) {
-  rotationTasks.push(newRotationValue);
-  if (!processingRotationTasks) {
-    processRotationTasks();
-  }
-}
-
-function processRotationTasks() {
-  processingRotationTasks = true;
-  // This method should act like a critical section, due to single-threaded
-  // nature of JS.
-  // While rotation tasks are present process them, in a chained manner, such
-  // that each event gets processed and rendered individually.
-  setTimeout(function() {
-    if (rotationTasks.length > 0) {
-      executeOneRotationTask();
-      processRotationTasks();
-    } else {
-      processingRotationTasks = false;
-    }
-  }.bind(this), 0);
-}
-
-function executeOneRotationTask() {
-  rubik.setRotationFromObject(rotationTasks.shift());
-}
-
-
-// TODO: Where should the API be. We need to serialize, or perhaps not?
-// Maybe serialized value should be the boundary?
-// A good opportunity to use custom values, too.
 function addMove(axis, dir, layer) {
   movesList.push(serializeMove(axis, dir, layer));
 }
 
-function updateRotationView(rotObj) {
-  if (ENABLE_ROTATION_SYNC) {
-    rotationList.set(0, rotObj);
-  } else {
-    // Rotation sync is off, rotate locally directly without broadcasting.
-    rubik._update();
-  }
-}
 
 function serializeMove(axis, dir, layer) {
   var move = {};
@@ -402,10 +336,6 @@ function processIncomingMovesAdded(moves, opt_skipAnimation) {
   }
 }
 
-function resetCube() {
-  movesList.clear();
-  // How does this translate to add/remove? A bunch of removes that we don't track currently...
-}
 
 function logDebug(msg) {
   if (IS_DEBUG) {

@@ -310,27 +310,8 @@ Rubik.prototype._dragMove = function(e) {
 		
 		this._drag.mouse = mouse;
 		this._rotation = Quaternion.fromRotation([N[0], N[1], 0], norm/2).multiply(this._rotation);
-    
-    // Send an update via settimeout
-    this._broadcastRotation();
-    
-    // Don't update from mouse moves, wait for local processing. But what about timeouts?
-		// this._update();
+		this._update();
 	}
-}
-
-Rubik.prototype._broadcastRotation = function() {
-  // TODO - confirm serialization approach. Wrapper shouldn't know about 
-  // quaternions, but Rubik's should not know about move object. Well, object
-  // vs. string representation - object = string array = comma-separated list.
-  updateRotationView(this._rotation.toObject());
-}
-
-Rubik.prototype.setRotationFromObject = function(rotationObj) {
-  // logDebug('Setting Rotation from Object: ');
-  // logDebug(rotationObj);
-  this._rotation = Quaternion.fromObject(rotationObj);
-  this._update();
 }
 
 
@@ -344,7 +325,6 @@ Rubik.prototype._dragEnd = function(e) {
 }
 
 Rubik.prototype._rotate = function(face1, face2) {
-  logDebug('RUBIK rorate');
 	var t1 = face1.getType();
 	var t2 = face2.getType();
 	var pos1 = face1.getCube().getPosition();
