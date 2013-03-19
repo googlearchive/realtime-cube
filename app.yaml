@@ -6,25 +6,6 @@ threadsafe: true
 
 handlers:
 
-- url: /cube3d
-  static_dir: cube3d
-  secure: always
-
-- url: /realtimecube.js
-  static_files: realtimecube.js
-  upload: realtimecube.js
-  secure: always
-
-- url: /loading_spinner_16.gif
-  static_files: loading_spinner_16.gif
-  upload: loading_spinner_16.gif
-  secure: always
-
-- url: /realtime-client-utils.js
-  static_files: realtime-client-utils.js
-  upload: realtime-client-utils.js
-  secure: always
-
 - url: /
   static_files: index.html
   upload: index.html
@@ -35,15 +16,23 @@ handlers:
   upload: favicon.ico
   secure: always
 
-- url: /icon_128.png
-  static_files: icon_128.png
-  upload: icon_128.png
+- url: /cube3d
+  static_dir: cube3d
   secure: always
 
 - url: /screenshot.png
   static_files: screenshot.png
   upload: screenshot.png
   secure: always
+
+- url: /images
+  static_dir: images
+  secure: always
+
+- url: /js
+  static_dir: js
+  secure: always
+
 
 skip_files:
 # Default patterns skipped by App Engine, which must be repeated since

@@ -10,9 +10,9 @@
 
     <!-- Load the utility library. -->
     <script type="text/javascript"
-            src="realtime-client-utils.js"></script>
+            src="js/realtime-client-utils.js"></script>
 
-    <script type="text/javascript" src="realtimecube.js"></script>
+    <script type="text/javascript" src="js/realtimecube.js"></script>
 
   	<meta charset="utf-8" />
   	<script src="cube3d/js/oz.js"></script>
@@ -25,7 +25,7 @@
 
   <!-- Start RealTime when the body has loaded. -->
   <body onLoad='startRealtimeCube()'>
-    <img id="logo" src="icon_128.png">
+    <img id="logo" src="images/icon_128.png">
     <div class="main-heading-1">Realtime Cube</div>
     <div class="main-heading-2">A 3D collaborative puzzle cube built using the <a target="_blank" href="https://developers.google.com/drive/realtime/">Google Drive Realtime API</a></div>
     <hr>
@@ -40,7 +40,7 @@
     </div>
 
     <div id="loading" style="display: none">
-        <img src="loading_spinner_16.gif" /> Loading...
+        <img src="images/loading_spinner_16.gif" /> Loading...
     </div>
 
     <div id="content" style="display:none;">
@@ -53,6 +53,8 @@
       </div>
       <br>
     </div>
+
+    <a href="https://github.com/googledrive/realtime-cube"><img style="position: absolute; bottom: 0; right: 0; border: 0;" src="/images/github.png" alt="Fork me on GitHub"></a>
 
     <script type="text/javascript">
       var _gaq = _gaq || [];
