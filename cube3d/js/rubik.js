@@ -220,9 +220,6 @@ Rubik.prototype.init = function() {
 	this._build();
 	this._update();
 	OZ.Event.add(document.body, "mousedown touchstart", this._dragStart.bind(this));
-	
-  // Don't init on startup.
-	// setTimeout(this.randomize.bind(this), 500);
 }
 
 Rubik.prototype.randomize = function() {
@@ -233,14 +230,6 @@ Rubik.prototype.randomize = function() {
 			this._rotateRandom();
 		} else {
 			OZ.Event.remove(e);
-			
-			this._help.a = OZ.DOM.elm("p", {innerHTML:"Drag or swipe the background to rotate the whole cube."});
-			this._help.b = OZ.DOM.elm("p", {innerHTML:"Drag or swipe the cube to rotate its layers."});
-			document.body.appendChild(this._help.a);
-			document.body.appendChild(this._help.b);
-			OZ.CSS3.set(this._help.a, "transition", "opacity 500ms");
-			OZ.CSS3.set(this._help.b, "transition", "opacity 500ms");
-			
 		}
 	}
 	var e = OZ.Event.add(null, "rotated", cb.bind(this));
