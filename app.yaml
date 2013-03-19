@@ -35,9 +35,9 @@ handlers:
   upload: favicon.ico
   secure: always
 
-- url: /icon.png
-  static_files: icon.png
-  upload: icon.png
+- url: /icon_128.png
+  static_files: icon_128.png
+  upload: icon_128.png
   secure: always
 
 - url: /screenshot.png
