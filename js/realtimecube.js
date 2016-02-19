@@ -162,7 +162,7 @@ function removeAbsentCollaborators() {
   for (var i = 0; i < currentDomSessionIds.length; i++) {
     var domSessionId = currentDomSessionIds[i];
     var found = false;
-    for (var j = 0; i < updatedCollaborators.length; j++) {
+    for (var j = 0; j < updatedCollaborators.length; j++) {
       var updatedCollaborator = updatedCollaborators[j];
       if (domSessionId == updatedCollaborator.sessionId) {
         // Found, do not remove
