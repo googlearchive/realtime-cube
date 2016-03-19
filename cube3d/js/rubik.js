@@ -30,7 +30,7 @@ Face.prototype.init = function(cube, type) {
 	this._color = null;
 	this._node = OZ.DOM.elm("div", {className:"face face"+type, width:Face.SIZE+"px", height:Face.SIZE+"px", position:"absolute", left:"0px", top:"0px"});
 	OZ.CSS3.set(this._node, "box-sizing", "border-box");
-//	OZ.CSS3.set(this._node, "backface-visibility", "hidden");
+	OZ.CSS3.set(this._node, "backface-visibility", "hidden");
 
 	switch (type) {
 		case Face.LEFT:
